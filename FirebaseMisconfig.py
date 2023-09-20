@@ -92,19 +92,22 @@ def reverseEngineerApplication(apkFileName):
 	myPrint("Successfully decompiled the application. Proceeding with enumeraing firebase peoject names from the application code.", "INFO")
 
 def findFirebaseProjectNames():
-	global firbaseProjectList
-	regex='https*://(.+?)\.firebaseio.com'
-	for dir_path, dirs, file_names in os.walk(rootDir+apkFileName+"_"+hashlib.md5().hexdigest()):
-		for file_name in file_names:
-			fullpath = os.path.join(dir_path, file_name)
-			for line in file(fullpath):
-				temp=re.findall(regex,line)
-				if (len(temp)!=0):
-					firbaseProjectList=firbaseProjectList+temp
-					myPrint("Firebase Instance(s) Found", "INFO")
-	if (len(firbaseProjectList)==0):
-		myPrint("No Firebase Project Found. Taking an exit!\nHave an nice day.", "OUTPUT")
-		exit(0)
+    global firebaseProjectList
+    regex = b'https*://(.+?)\.firebaseio.com'
+    for dir_path, dirs, file_names in os.walk(rootDir + apkFileName + "_" + hashlib.md5().hexdigest()):
+        for file_name in file_names:
+            fullpath = os.path.join(dir_path, file_name)
+            with open(fullpath, 'rb') as file:
+                for line in file:
+                    temp = re.findall(regex, line)
+                    if len(temp) != 0:
+                        firebaseProjectList += [match.decode('utf-8') for match in temp]
+                        myPrint("Firebase Instance(s) Found", "INFO")
+    if len(firebaseProjectList) == 0:
+        myPrint("No Firebase Project Found. Taking an exit!\nHave a nice day.", "OUTPUT")
+        exit(0)
+
+
 def printFirebaseProjectNames():
 	myPrint("Found "+str(len(firbaseProjectList))+"Project References in the application. Printing the list of Firebase Projects found.", "OUTPUT")
 	for projectName in firbaseProjectList:
