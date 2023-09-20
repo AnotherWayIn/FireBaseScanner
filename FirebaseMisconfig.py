@@ -20,7 +20,7 @@ class bcolors:
     FGWHITE = '\033[37m'
     FAIL = '\033[95m'
 
-rootDir = os.path.expanduser("~") + "/.SourceCodeAnalyzer/"  # ConfigFolder ~/.SourceCodeAnalyzer/
+rootDir = output #os.path.expanduser("~") + "/.SourceCodeAnalyzer/"  # ConfigFolder ~/.SourceCodeAnalyzer/
 projectDir = ""
 apkFilePath = ""
 apkFileName = ""
@@ -80,7 +80,7 @@ def reverseEngineerApplication(apkFileName):
         return projectDir
     os.mkdir(projectDir)
     myPrint("Decompiling the APK file using APKtool.", "INFO")
-    result = os.system("java -jar " + apktoolPath + " d " + "--output " + '"' + projectDir + "./apktool/" + '"' + ' "' + apkFilePath + '"' + '>/dev/null')
+    result=os.system("java -jar "+apktoolPath+" d "+"--output "+'"'+projectDir+"/apktool/"+'"'+' "'+apkFilePath+'"'+'>/dev/null')
     if result != 0:
         myPrint("Apktool failed with exit status " + str(result) + ". Please Try Again.", "ERROR")
         print()
