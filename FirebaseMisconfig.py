@@ -27,7 +27,7 @@ apkFileName = ""
 firebaseProjectList = []
 inScopeUrls = []
 apkHash = ""
-apktoolPath = "./Dependencies/apktool_2.3.4.jar"
+apktoolPath = "./Dependencies/apktool_2.8.1.jar"
 
 def myPrint(text, type):
     if type == "INFO":
