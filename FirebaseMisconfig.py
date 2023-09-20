@@ -20,7 +20,7 @@ class bcolors:
     FGWHITE = '\033[37m'
     FAIL = '\033[95m'
 
-rootDir = output #os.path.expanduser("~") + "/.SourceCodeAnalyzer/"  # ConfigFolder ~/.SourceCodeAnalyzer/
+rootDir = "output" #os.path.expanduser("~") + "/.SourceCodeAnalyzer/"  # ConfigFolder ~/.SourceCodeAnalyzer/
 projectDir = ""
 apkFilePath = ""
 apkFileName = ""
