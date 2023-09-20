@@ -11,7 +11,7 @@ Firebase is one of the widely used data stores for mobile applications. In 2018,
 ## Getting Started
 
 ### Prerequisites
-* Support for Python 2.7
+* Python 3
 
 ### Installing
 
